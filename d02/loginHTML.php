@@ -1,5 +1,15 @@
+<?php
+    if($_GET){
+        var_dump($_GET);
+        $errors = json_decode($_GET['errors']);
+//        var_dump($errors); # object ---> casted to array
+        $errors = (array) $errors;
+        var_dump($errors);
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html skills="en">
 <head>
     <meta charset="UTF-8">
     <title>Login form </title>
@@ -26,19 +36,19 @@
 
             <label  class="form-label">Skills:</label>
             <div class="mb-3 form-check">
-                <input type="checkbox" name="lang[]"  value="MYSQL" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" name="skills[]"  value="MYSQL" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label"  for="exampleCheck1">MYSQL</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" name="lang[]"  value="js" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" name="skills[]"  value="js" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label"  for="exampleCheck1">js</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" name="lang[]"  value="nodejs" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" name="skills[]"  value="nodejs" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label"  for="exampleCheck1">nodejs</label>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" name="lang[]"  value="php" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" name="skills[]"  value="php" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label"  for="exampleCheck1">php</label>
             </div>
 
