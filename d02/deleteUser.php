@@ -2,8 +2,11 @@
     include './layouts/general.php';
 
     $userID = $_GET['id'];
-    $users=  file('usersDB.txt');
-
+    if(!file_exists("usersDB.txt"))
+        echo"Something went wrong, file DB doesn't exists!";
+    else
+        $users = file("usersDB.txt");
+        
     foreach ($users as $index=>$user){
         $userInfo= explode('|', $user);
         if ($userInfo[0]==$userID){

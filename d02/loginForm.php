@@ -1,8 +1,6 @@
 <?php
     if($_GET){
-        // var_dump($_GET);
         $errors = json_decode($_GET['errors']);
-//        var_dump($errors); # object ---> casted to array
         $errors = (array) $errors;
     }
     
