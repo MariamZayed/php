@@ -10,19 +10,22 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $gender = $_POST['gender'];
-        var_dump($gender);
         $fullname = $fname.$lname;
 
-        echo "<h3> Please checkout ypur inforamtion: </h3>";
-        if($gender=="female")
-            echo "Hello Ms: {$fullname}<br>";
-        else
-            echo "Hello Mr: {$fullname}<br>";
-
-        echo "Address: {$address}<br>";
-        echo "Your Skills: <br>";
-        foreach ($lang as $k=>$value){
-            echo "{$value}<br>";
+        // --------- Start of Welcoming msg
+        if(true){
+            echo "<h3> Please checkout your inforamtion: </h3>";
+            if($gender=="female")
+                echo "Hello Ms: {$fullname}<br>";
+            else
+                echo "Hello Mr: {$fullname}<br>";
+    
+            echo "Address: {$address}<br>";
+            echo "Your Skills: <br>";
+            foreach ($skills as $k=>$value){
+                echo "{$value}<br>";
+            } 
         }
+        // --------- End of Welcoming msg
     // }    
 ?>

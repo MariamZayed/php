@@ -1,11 +1,11 @@
 <?php
     if($_GET){
-        var_dump($_GET);
+        // var_dump($_GET);
         $errors = json_decode($_GET['errors']);
 //        var_dump($errors); # object ---> casted to array
         $errors = (array) $errors;
-        var_dump($errors);
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 <body>
     <div class="container">
 
-        <form method="post" action="login.php" >
+        <form method="post" action="loginValidation.php" >
             <div class="mb-3">
                 <label  class="form-label">First Name</label>
                 <input type="text" name='fname' class="form-control">
