@@ -19,14 +19,17 @@
     $formCurrentFields =array("name"=>$name,"email" =>$email,"password"=>$password,"repeatPassword"=>$repeatPassword,"roomNO"=>$roomNO,);//"file_name"=>$file_name
 
 
-    //----------- Start of Validation
+    //----------- Start of Validation -------------
     foreach ($formCurrentFields as $key=> $filed){
         if(!isset($filed) or empty($filed)){
             $errors[$key] = "{$key} is Required <br>";
         }else
             $formVaildFields[$key] =$filed;
     }
-        //---------- Valid image extensions 
+    // check for repeating password
+    if($password!=$repeatPassword)
+        header("location:registerForm.php?error= password isnt same");
+    // Check image extensions 
     // imageValidation($errors,$file_name);
     if($errors){
         $jsonErrors=json_encode($errors);
@@ -42,7 +45,6 @@
             echo "there was an error uploading your file";
         else{
             // echo"testooo";
-
             if($fileSize>1000000)
                 echo "file exedded valid size";
             else{
@@ -56,7 +58,7 @@
                 if(!move_uploaded_file($fileTmp,$imagePath))
                     echo " something went wrong while uploading image";
                 else{
-                        // ------Create ID for User
+                    // Create ID for User
                     $date = date_create();// if no errors from validation then create an id
                     $userID = date_timestamp_get($date);
                     $user_record = "{$userID}|{$name}|{$email}|{$password}|{$roomNO}|{$imagePath}";
@@ -75,7 +77,7 @@
 
     }
 
-    //----------- End of Validation
+    //----------- End of Validation ------------
 
 
 ?>

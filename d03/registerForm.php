@@ -32,7 +32,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Room No</label>
-                <input type="text" name="roomNO" class="form-control" id="exampleInputPassword1">
+                <input type="text" name="roomNO" class="form-control" id="exampleInputPassword1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
             </div>
             <div class="mb-3">
                 <label>Profile Picture</label>
@@ -40,6 +40,7 @@
             </div>
                 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
         </form>
 
     </div>

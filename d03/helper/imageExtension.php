@@ -6,6 +6,5 @@
         if(!in_array($extension, $allowed_extenstions)){
             $errors["file_name"] = "select image of png, jpg, jpeg<br>";
         }
-        var_dump($errors);
     }
 ?>
