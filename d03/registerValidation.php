@@ -1,8 +1,11 @@
-<?php
-// here goes validation
+<?php   // here goes validation
+    session_start();
+    $_SESSION["name"]= 'mariam';      
 
+    if(!empty($_SESSION))
+        header("location:index.php? you already logged in!");
+    var_dump( $_SESSION);
     include "./helper/imageExtension.php";
-
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -64,14 +67,8 @@
                     $user_record = "{$userID}|{$name}|{$email}|{$password}|{$roomNO}|{$imagePath}";
                     header("location:registerValidation.php?upload-success");
                 }   
-                
-
             }
-
-
-            
-
-            // header("location:usersTable.php");
+            header("location:index.php");
         }
         
 

@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    if(!empty($_SESSION))
+        header("location:index.php? you already logged in!");
     include "./layouts/general.php"
 ?>
 
