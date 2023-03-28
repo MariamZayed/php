@@ -3,7 +3,8 @@
     session_start();
     if(!empty($_SESSION))
         header("location:index.php? you already logged in! go to home page");
-    include "./layouts/general.php"
+    // else
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,10 @@
 </head>
 <body>
     <div class="container">
-
+        <a href="index.php">Home</a>
+        <a href="#">Products</a>
+        <a href="usersTable.php">Users</a>
+        <a href="#">Checks</a>
         <form method="post" action="registerValidation.php" enctype="multipart/form-data">
             <div class="mb-3">
                 <label  class="form-label">Name</label>

@@ -22,7 +22,11 @@ try{
             // echo "<td> <a href='"."{$editUrl}". "' class='btn btn-primary'> Edit</a> </td>";
             // echo "</tr>";
         }
+        echo "<tr><td> <a href='./helper/logout.php' class='btn btn-danger'> Logout</a> </td></tr>";
+
     }
 }catch (Exception $e) {var_dump($e);}
 // ---------- End of DB
+
+
 ?>

@@ -5,4 +5,4 @@
     else
         echo "<h1> Cafetria </h1>";
 ?>
-    echo <a href="./helper/logout.php" class="btn btn-danger">Logout </a>;
+    <a href="./helper/logout.php" class="btn btn-danger">Logout </a>;
