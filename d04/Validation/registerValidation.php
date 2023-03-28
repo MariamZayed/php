@@ -1,13 +1,13 @@
 <?php   // here goes validation
-        include "./helper/imageExtension.php";
-        include "./helper/addUser.php";
-        include './layouts/general.php';
+        include "./imageExtValidation.php";
+        include "../Controller/addUser.php";
+        include '../layouts/general.php';
 
     session_start();
     $_SESSION["name"]= 'mariam';      
     if(!empty($_SESSION))
-        header("location:index.php? go to home page");
-    var_dump( $_SESSION);
+        header("location:../View/homePage.php? we are in home page");
+    // var_dump( $_SESSION);
 
 
     $name = $_POST['name'];
@@ -26,8 +26,8 @@
     $formCurrentFields =array("name"=>$name,"email" =>$email,"password"=>$password,
     "repeatPassword"=>$repeatPassword,"roomNO"=>$roomNO,"fileName"=>$fileName);
 
-    echo "post:";
-    var_dump($_POST);
+    // echo "post:";
+    // var_dump($_POST);
     //----------- Start of Validation -------------
     foreach ($formCurrentFields as $key=> $filed){
         if(!isset($filed) or empty($filed)){
@@ -38,31 +38,31 @@
     
     // check for repeating password
     if($password!=$repeatPassword)
-        header("location:registerForm.php?error= password isn't same");
+        header("location:../Views/registerForm.php?error= password isn't same");
     // Check image extensions 
     imageValidation($errors,$fileName);
     if($errors){
         $jsonErrors=json_encode($errors);
-        $redirectURL = "Location:registerForm.php?errors={$jsonErrors}";
+        $redirectURL = "Location:../Views/registerForm.php?errors={$jsonErrors}";
         if($formVaildFields){// passing written fields to url so user not have to write again
             $oldValues=json_encode($formVaildFields);
             $redirectURL.="&oldValues={$oldValues}";
         }
         header($redirectURL);
     }else{
-        echo"testii<br>";   
+        // echo"testii<br>";   
         if($fileError!==0)
             echo "there was an error uploading your file";
         else{
-            echo"testooo<br>";
+            // echo"testooo<br>";
             if($fileSize>1000000)
                 echo "file exedded valid size";
             else{
-                echo "testING";
+                // echo "testING";
                 $splitImage = explode(".",basename($fileName));// indexes are iamge name and etension
                 $extension = end($splitImage); // bring the last index =>extension
                 $imageNewName = uniqid('',true).".".$extension;
-                $imagePath = "./images/{$imageNewName}";
+                $imagePath = "../images/{$imageNewName}";
 
                 if(!move_uploaded_file($fileTmp,$imagePath))
                     echo " something went wrong while uploading image";
@@ -71,22 +71,20 @@
                     $date = date_create();// if no errors from validation then create an id
                     $userID = date_timestamp_get($date);
                     $userRecord = "{$userID}|{$name}|{$email}|{$password}|{$roomNO}|{$imagePath}";
-                    echo "testwwww";
+                    // echo "testwwww";
                     try{
-                        echo "testoo";
-                        $fileHandler= fopen("usersDB.txt", 'a');
+                        // echo "testoo";
+                        $fileHandler= fopen("../usersDB.txt", 'a');
                         fwrite($fileHandler, $userRecord.PHP_EOL);
                         fclose($fileHandler);
 
-                        if(is_readable('usersDB.txt')){
-                            $users= file("usersDB.txt");
+                        if(is_readable('../usersDB.txt')){
+                            $users= file("../usersDB.txt");
                         }
-
                     }
                     catch (Exception $e){
                         var_dump($e);
                     }
-                    // header("location:registerValidation.php?upload-success");
                 }   
             }
         }
