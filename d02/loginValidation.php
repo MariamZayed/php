@@ -11,7 +11,7 @@
     $gender = $_POST['gender'];
 
     $fullname = $fname.$lname;
-    $user_record = "{$fullname}|{$address}|{$gender}";
+    $userRecord = "{$fullname}|{$address}|{$gender}";
     $errors =[];
     $formFields =array("fname"=>$fname,"lname"=>$lname,"address"=>$address,"skills"
         =>$skills,"username"=>$username,"password"=>$password,"gender"=>$gender);
@@ -39,9 +39,21 @@
         // ------ Start Create ID for User
         $date = date_create();// if no errors from validation then create an id
         $userID = date_timestamp_get($date);
-        $user_record = "{$userID}|{$fullname}|{$address}|{$gender}";
+        $userRecord = "{$userID}|{$fullname}|{$address}|{$gender}";
         // ------ End Create ID for User
-
+        try{
+            $fileHandler= fopen("usersDB.txt", 'a');
+            fwrite($fileHandler, $userRecord.PHP_EOL);
+            fclose($fileHandler);
+    
+            if(is_readable('usersDB.txt')){
+                $users= file("usersDB.txt");
+                var_dump($users);
+            }
+        }
+        catch (Exception $e){
+            var_dump($e);
+        }
         header("location:usersTable.php");
 
     }

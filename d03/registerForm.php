@@ -1,7 +1,8 @@
 <?php
+    include './layouts/general.php';
     session_start();
     if(!empty($_SESSION))
-        header("location:index.php? you already logged in!");
+        header("location:index.php? you already logged in! go to home page");
     include "./layouts/general.php"
 ?>
 

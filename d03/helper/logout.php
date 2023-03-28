@@ -8,4 +8,4 @@ if(isset($_SESSION)){
 }
 ?>
 <h1>You logout Succesfully!</h1>
-<a href="../registerForm.php">Login Page</a>
+<a href="../registerForm.php">Login Page</a> -->
