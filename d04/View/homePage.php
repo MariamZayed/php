@@ -5,6 +5,6 @@
     else
         echo "<h1> Cafetria </h1>";
 ?>
-    <a href="./editForm.php" class="btn btn-danger">Edit users</a><br>
+    <a href="./usersTable.php" class="btn btn-danger"> Users Table</a><br>
     <a href="../Controller/logout.php" class="btn btn-danger">Logout </a>
 

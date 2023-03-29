@@ -2,26 +2,26 @@
     include '../layouts/general.php';
 
     $userID = $_GET['id'];
+    echo $userID;
     if(!file_exists("../usersDB.txt"))
-        echo"Something went wrong, file DB doesn't exists!";
+        header("location:../View/usersTable.php?file DB doesn't exists!");
     else
-        $users = file("../usersDB.txt");
+        $usersArr = file("../usersDB.txt");
         
-    foreach ($users as $index=>$user){
+    foreach($usersArr as $index=>$user){
         $userInfo= explode('|', $user);
-        // var_dump($userInfo);  
         if ($userInfo[0]==$userID){
-            unset($users[$index]);
+            unset($usersArr[$index]);
             break;
         }
     }
     
     $fileHandler = fopen("../usersDB.txt", 'w');
-    foreach ($users as $user){
+    foreach ($usersArr as $user){
         fwrite($fileHandler, $user);
     }
     fclose($fileHandler);
     readfile('../usersDB.txt');
-    header('location:../View/usersTable.php');
+    // header('location:../View/usersTable.php');
     exit;
 ?>

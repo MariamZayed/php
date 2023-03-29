@@ -1,13 +1,10 @@
 <?php   // here goes validation
-        include "./imageExtValidation.php";
+        // include "./imageExtValidation.php";
         include "../Controller/addUser.php";
         include '../layouts/general.php';
 
     session_start();
-    $_SESSION["name"]= 'mariam';      
-    if(!empty($_SESSION))
-        header("location:../View/homePage.php? we are in home page");
-    // var_dump( $_SESSION);
+
 
 
     $name = $_POST['name'];
@@ -40,7 +37,7 @@
     if($password!=$repeatPassword)
         header("location:../Views/registerForm.php?error= password isn't same");
     // Check image extensions 
-    imageValidation($errors,$fileName);
+    // imageValidation($errors,$fileName);
     if($errors){
         $jsonErrors=json_encode($errors);
         $redirectURL = "Location:../Views/registerForm.php?errors={$jsonErrors}";
@@ -72,19 +69,9 @@
                     $userID = date_timestamp_get($date);
                     $userRecord = "{$userID}|{$name}|{$email}|{$password}|{$roomNO}|{$imagePath}";
                     // echo "testwwww";
-                    try{
-                        // echo "testoo";
-                        $fileHandler= fopen("../usersDB.txt", 'a');
-                        fwrite($fileHandler, $userRecord.PHP_EOL);
-                        fclose($fileHandler);
-
-                        if(is_readable('../usersDB.txt')){
-                            $users= file("../usersDB.txt");
-                        }
-                    }
-                    catch (Exception $e){
-                        var_dump($e);
-                    }
+                    addUser($userRecord);
+                    $_SESSION["name"]= $name;      
+                    header("location:../View/homePage.php");
                 }   
             }
         }
