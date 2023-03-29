@@ -10,3 +10,8 @@ you can find it in the next repo link https://github.com/NohaAShehab/os-mansoura
 
 2- go to <code>/var/www/html</code> and create your main directory: for example dir_name<br>
 3- go to your browser and type localhost/dir_name<br>
+
+# apach2 remaiders
+- If you're using apache2 instead of xampp <br>
+- <code>/etc/init.d/apache2 start</code> <br> to start service<br>
+- <code>/etc/init.d/apache2 stop </code><br> to stop service<br>
