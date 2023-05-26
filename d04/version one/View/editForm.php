@@ -2,7 +2,7 @@
     include '../layouts/general.php';
     session_start();
     $userID = $_GET['id'];
-    echo $userID;
+    // echo $userID;
     if(!file_exists("../usersDB.txt"))
         header("location:../View/usersTable.php?file DB doesn't exists!");
     else
@@ -18,7 +18,7 @@
     if($old == null){
         header("location:../View/usersTable.php?file DB doesn't exists!");
     }
-    print_r($old);
+    // print_r($old);
 ?>  
 
 <!DOCTYPE html>
@@ -49,10 +49,10 @@
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Repeat Password</label>
                 <input type="password" name="repeatPassword" class="form-control" id="exampleInputPassword1">
-            </div>
+            </div> -->
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Room No</label>
                 <input type="text" name="roomNO" class="form-control" value="<?php echo $old[4]; ?>" id="exampleInputPassword1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
@@ -62,7 +62,7 @@
                 <input type="file" name="image"/>
             </div>
                 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-primary">Reset</button>
         </form>
 
