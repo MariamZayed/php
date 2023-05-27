@@ -49,8 +49,7 @@
                 array_push($usersArr,$updatedUserRecord);
                 unset($usersArr[$index]);
                     file_put_contents("../usersDB.txt", implode("", $usersArr));
-                    echo 'file updated successfully <br>';
-                    echo "<a href='../View/usersTable.php'>Users Table</a>";
+                    echo 'file updated successfully';
                 break;
             
             }
